@@ -86,8 +86,18 @@ public class PlayerBoard extends Board implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("recieved button press");
-		if(e.getSource()==VisualControl.HoverButton){
-			System.out.println("source identified");
+		if(e.getSource()==VisualControl.DestroyerButton){
+			this.ShipToPlace = 0;
+		}else if(e.getSource()==VisualControl.CruiserButton){
+			this.ShipToPlace = 1;
+		}else if(e.getSource()==VisualControl.BattleshipButton){
+			this.ShipToPlace = 2;
+		}else if(e.getSource()==VisualControl.HoverButton){
+			this.ShipToPlace = 3;
+		}else if(e.getSource()==VisualControl.CarrierButton){
+			this.ShipToPlace = 4;
+		}else{
+			System.out.println("Failed to find source");
 		}
 		
 	}
