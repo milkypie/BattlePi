@@ -1,6 +1,13 @@
 package CustomComponents;
 
 import java.util.Random;
+<<<<<<< HEAD
+=======
+
+import java.awt.Color;
+
+import javax.swing.JLabel;
+>>>>>>> branch 'working' of https://github.com/milkypie/BattlePi.git
 
 import Control.BattleshipMain;
 
@@ -16,13 +23,13 @@ public class AIBoard extends Board{
 		// TODO Auto-generated method stub
 		
 		try {
-			//O = RandomO();
-			//Randomize(0,O);
-			//this.Ships[0] = new Ship(this,0,new Location(HW[0],HW[1]),O);
+			O = RandomO();
+			Randomize(0,O);
+			this.Ships[0] = new Ship(this,0,new Location(HW[0],HW[1]),O);
 			//O = RandomO();
 			//Randomize(1,O);
-			this.Ships[1] = new Ship(this,1,new Location(290,290),2);
-			O = RandomO();
+			//this.Ships[1] = new Ship(this,1,new Location(290,290),2);
+			//O = RandomO();
 			//Randomize(2,O);
 			//this.Ships[2] = new Ship(this,2,new Location(170,170),3);
 		} catch (CustomException e) {
