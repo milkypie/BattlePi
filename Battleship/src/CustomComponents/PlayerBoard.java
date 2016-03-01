@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JLabel;
+
 import Visuals.VisualControl;
 import Control.BattleshipMain;
 
@@ -11,6 +13,12 @@ public class PlayerBoard extends Board implements ActionListener{
 	private int ShipToPlace = 0,PlacingRotation = 0;
 	public PlayerBoard(){
 		super();
+		this.NameLabel = new JLabel();
+		this.NameLabel.setLocation(50, 0);
+		this.NameLabel.setForeground(Color.BLACK);
+		this.NameLabel.setText("Player Board");
+		this.NameLabel.setSize(100, 50);
+		this.add(this.NameLabel);
 	}
 
 	@Override

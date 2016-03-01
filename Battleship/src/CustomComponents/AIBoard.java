@@ -2,11 +2,21 @@ package CustomComponents;
 
 import java.util.Random;
 
+import java.awt.Color;
+
+import javax.swing.JLabel;
+
 import Control.BattleshipMain;
 
 public class AIBoard extends Board{
 	public AIBoard(){
 		super();
+		this.NameLabel = new JLabel();
+		this.NameLabel.setLocation(50, 0);
+		this.NameLabel.setForeground(Color.BLACK);
+		this.NameLabel.setText("AI Board");
+		this.NameLabel.setSize(100, 50);
+		this.add(this.NameLabel);
 	}
 
 	private int O, i, H, W;
@@ -16,13 +26,13 @@ public class AIBoard extends Board{
 		// TODO Auto-generated method stub
 		
 		try {
-			//O = RandomO();
-			//Randomize(0,O);
-			//this.Ships[0] = new Ship(this,0,new Location(HW[0],HW[1]),O);
+			O = RandomO();
+			Randomize(0,O);
+			this.Ships[0] = new Ship(this,0,new Location(HW[0],HW[1]),O);
 			//O = RandomO();
 			//Randomize(1,O);
-			this.Ships[1] = new Ship(this,1,new Location(290,290),2);
-			O = RandomO();
+			//this.Ships[1] = new Ship(this,1,new Location(290,290),2);
+			//O = RandomO();
 			//Randomize(2,O);
 			//this.Ships[2] = new Ship(this,2,new Location(170,170),3);
 		} catch (CustomException e) {
