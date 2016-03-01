@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import Control.BattleshipMain;
 import Visuals.VisualControl;
 public class GenerateVisuals {
-	
 	public static void CreateWindow(){
 		VisualControl.Window.setSize(650, 500);
 		VisualControl.Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,12 +26,12 @@ public class GenerateVisuals {
 		VisualControl.BasePanel.add(BattleshipMain.PlayerBoard);
 		VisualControl.BasePanel.add(BattleshipMain.AIBoard);
 		
-		JButton HoverButton = new JButton();
-		HoverButton.setLocation(300,400);
-		HoverButton.setSize(80, 50);
-		HoverButton.setText("Hover-Craft");
+		VisualControl.HoverButton = new JButton("Hover-Craft");
+		VisualControl.HoverButton.setLocation(300,400);
+		VisualControl.HoverButton.setSize(80, 50);
+		VisualControl.HoverButton.addActionListener(BattleshipMain.PlayerBoard);
 		
-		VisualControl.BasePanel.add(HoverButton);
+		VisualControl.BasePanel.add(VisualControl.HoverButton);
 		
 				
 		return VisualControl.BasePanel;

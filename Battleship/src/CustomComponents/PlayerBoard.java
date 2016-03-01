@@ -1,10 +1,13 @@
 package CustomComponents;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import Visuals.VisualControl;
 import Control.BattleshipMain;
 
-public class PlayerBoard extends Board {
+public class PlayerBoard extends Board implements ActionListener{
 	private int ShipToPlace = 0,PlacingRotation = 0;
 	public PlayerBoard(){
 		super();
@@ -76,6 +79,16 @@ public class PlayerBoard extends Board {
 	@Override
 	public void Shoot() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("recieved button press");
+		if(e.getSource()==VisualControl.HoverButton){
+			System.out.println("source identified");
+		}
 		
 	}
 }
