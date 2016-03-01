@@ -12,7 +12,7 @@ public class AIBoard extends Board{
 		this.NameLabel = new JLabel();
 		this.NameLabel.setLocation(50, 0);
 		this.NameLabel.setForeground(Color.BLACK);
-		this.NameLabel.setText("AI Board");
+		this.NameLabel.setText("the AI Board");
 		this.NameLabel.setSize(100, 50);
 		this.add(this.NameLabel);
 	}
