@@ -1,10 +1,20 @@
 package CustomComponents;
 
+import java.awt.Color;
+
+import javax.swing.JLabel;
+
 import Control.BattleshipMain;
 
 public class AIBoard extends Board{
 	public AIBoard(){
 		super();
+		this.NameLabel = new JLabel();
+		this.NameLabel.setLocation(50, 0);
+		this.NameLabel.setForeground(Color.BLACK);
+		this.NameLabel.setText("AI Board");
+		this.NameLabel.setSize(100, 50);
+		this.add(this.NameLabel);
 	}
 
 	@Override

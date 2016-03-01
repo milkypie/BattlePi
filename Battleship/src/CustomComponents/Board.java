@@ -2,11 +2,13 @@ package CustomComponents;
 
 import java.awt.Color;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public abstract class Board extends JPanel {
 	protected Ship[] Ships = new Ship[5];
 	public BoardSquare[][] Squares = new BoardSquare[12][12];
+	protected JLabel NameLabel;
 	
 	public Board(){
 		super();
@@ -16,7 +18,7 @@ public abstract class Board extends JPanel {
 		for(int x=0;x<12;x++){
 			for(int y=0;y<12;y++){
 				this.Squares[x][y] = new BoardSquare(50+(20*x),50+(20*y));
-				this.add(Squares[x][y]);
+				this.add(this.Squares[x][y]);
 			}
 		}
 		
