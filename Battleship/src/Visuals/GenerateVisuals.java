@@ -9,10 +9,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Control.BattleshipMain;
+import CustomComponents.BoardSquare;
+import CustomComponents.CustomPanel;
 import Visuals.VisualControl;
 public class GenerateVisuals {
 	public static void CreateWindow(){
-		VisualControl.Window.setSize(650, 500);
+		VisualControl.Window.setSize(700, 500);
 		VisualControl.Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		VisualControl.Window.setVisible(true);
 		VisualControl.Window.setContentPane(CreateContentPane());
@@ -37,17 +39,17 @@ public class GenerateVisuals {
 		VisualControl.CruiserButton.addActionListener(BattleshipMain.PlayerBoard);
 		
 		VisualControl.BattleshipButton = new JButton("Battleship");
-		VisualControl.BattleshipButton.setLocation(200,400);
+		VisualControl.BattleshipButton.setLocation(190,400);
 		VisualControl.BattleshipButton.setSize(80,50);
 		VisualControl.BattleshipButton.addActionListener(BattleshipMain.PlayerBoard);
 		
 		VisualControl.HoverButton = new JButton("Hover-Craft");
-		VisualControl.HoverButton.setLocation(300,400);
+		VisualControl.HoverButton.setLocation(280,400);
 		VisualControl.HoverButton.setSize(80, 50);
 		VisualControl.HoverButton.addActionListener(BattleshipMain.PlayerBoard);
 		
 		VisualControl.CarrierButton = new JButton("Carrier");
-		VisualControl.CarrierButton.setLocation(400,400);
+		VisualControl.CarrierButton.setLocation(370,400);
 		VisualControl.CarrierButton.setSize(80,50);
 		VisualControl.CarrierButton.addActionListener(BattleshipMain.PlayerBoard);
 		
@@ -56,6 +58,26 @@ public class GenerateVisuals {
 		VisualControl.BasePanel.add(VisualControl.BattleshipButton);
 		VisualControl.BasePanel.add(VisualControl.HoverButton);	
 		VisualControl.BasePanel.add(VisualControl.CarrierButton);
+		
+		VisualControl.RotationButton = new JButton("Rotate");
+		VisualControl.RotationButton.setLocation(460, 400);
+		VisualControl.RotationButton.setSize(80,50);
+		VisualControl.RotationButton.addActionListener(BattleshipMain.PlayerBoard);
+		
+		VisualControl.BasePanel.add(VisualControl.RotationButton);
+		
+		VisualControl.PlacingIcons = new BoardSquare[4][4];
+		for(int XLooper = 0; XLooper<4; XLooper++){
+			for(int YLooper = 0; YLooper<4; YLooper++){
+				VisualControl.PlacingIcons[XLooper][YLooper] = new BoardSquare(570+(20*XLooper),370+(20*YLooper),Color.PINK);
+				if(XLooper==1&&(YLooper==1||YLooper==2)){
+					VisualControl.PlacingIcons[XLooper][YLooper].setVisible(true);
+				}else{
+					VisualControl.PlacingIcons[XLooper][YLooper].setVisible(false);
+				}
+				VisualControl.BasePanel.add(VisualControl.PlacingIcons[XLooper][YLooper]);
+			}
+		}
 		
 		return VisualControl.BasePanel;
 		
