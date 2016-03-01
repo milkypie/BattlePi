@@ -16,11 +16,15 @@ public class AIBoard extends Board{
 		// TODO Auto-generated method stub
 		
 		try {
-			O = RandomO();
-			Randomize(0,O);
-			this.Ships[0] = new Ship(this,0,new Location(HW[0],HW[1]),O);
-			this.Ships[3] = new Ship(this,1,new Location(110,110),2);
-			this.Ships[4] = new Ship(this,4,new Location(170,170),3);
+			//O = RandomO();
+			//Randomize(0,O);
+			//this.Ships[0] = new Ship(this,0,new Location(HW[0],HW[1]),O);
+			//O = RandomO();
+			//Randomize(1,O);
+			this.Ships[1] = new Ship(this,1,new Location(290,290),2);
+			//O = RandomO();
+			//Randomize(2,O);
+			//this.Ships[2] = new Ship(this,2,new Location(170,170),3);
 		} catch (CustomException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,7 +60,7 @@ public class AIBoard extends Board{
 	
 	public int[] Randomize(int shipno, int orientation) {
 		Random generator = new Random();
-		if (shipno == 0) {
+		if (shipno == 0) { //Destroyer
 			switch(orientation) {
 			case 0: //Should work
 				i = (generator.nextInt(12) + 1);
@@ -80,6 +84,30 @@ public class AIBoard extends Board{
 				W = (50+(i*20));
 			}
 		}
+		else if (shipno == 1) { //Cruiser
+			switch(orientation) {
+				case 0: //Should work
+					i = (generator.nextInt(12) + 1);
+					H = (50+(i*20));
+					i = (generator.nextInt(10) + 1);
+					W = (50+(i*20));
+				case 2: //Should work
+					i = (generator.nextInt(12) + 1);
+					H = (50+(i*20));
+					i = (generator.nextInt(10) + 1);
+					W = (90+(i*20));
+				case 1: 
+					i = (generator.nextInt(11) + 1);
+					H = (70+(i*20));
+					i = (generator.nextInt(12) + 1);
+					W = (50+(i*20));
+				case 3: 
+					i = (generator.nextInt(11) + 1);
+					H = (50+(i*20));
+					i = (generator.nextInt(12) + 1);
+					W = (50+(i*20));
+				}
+			}
 		HW[0] = H;
 		HW[1] = W;
 		return HW;
