@@ -22,7 +22,7 @@ public class AIBoard extends Board{
 			//O = RandomO();
 			//Randomize(1,O);
 			this.Ships[1] = new Ship(this,1,new Location(290,290),2);
-			//O = RandomO();
+			O = RandomO();
 			//Randomize(2,O);
 			//this.Ships[2] = new Ship(this,2,new Location(170,170),3);
 		} catch (CustomException e) {
