@@ -45,7 +45,7 @@ public class VisualControl {
 				PlacingIcons[3][1].setVisible(true);
 			break;
 			default:
-				System.out.println("Invalid ship num");
+				System.out.println("invalid rotaiton");
 			break;
 			}
 		break;
@@ -72,7 +72,7 @@ public class VisualControl {
 				PlacingIcons[3][1].setVisible(true);
 			break;
 			default:
-				System.out.println("Invalid ship num");
+				System.out.println("invalid rotaiton");
 			break;
 			}
 		break;
@@ -103,7 +103,7 @@ public class VisualControl {
 				PlacingIcons[3][2].setVisible(true);
 			break;
 			default:
-				System.out.println("Invalid ship num");
+				System.out.println("invalid rotaiton");
 			break;
 			}
 		break;
@@ -118,16 +118,70 @@ public class VisualControl {
 				PlacingIcons[3][3].setVisible(true);
 			break;
 			case 1:
-				
+				PlacingIcons[3][2].setVisible(true);
+				PlacingIcons[2][2].setVisible(true);
+				PlacingIcons[2][1].setVisible(true);
+				PlacingIcons[2][3].setVisible(true);
+				PlacingIcons[1][1].setVisible(true);
+				PlacingIcons[1][3].setVisible(true);
 			break;
 			case 2:
-				
+				PlacingIcons[2][3].setVisible(true);
+				PlacingIcons[2][2].setVisible(true);
+				PlacingIcons[1][2].setVisible(true);
+				PlacingIcons[3][2].setVisible(true);
+				PlacingIcons[1][1].setVisible(true);
+				PlacingIcons[3][1].setVisible(true);
 			break;
 			case 3:
-				
+				PlacingIcons[1][2].setVisible(true);
+				PlacingIcons[2][2].setVisible(true);
+				PlacingIcons[2][1].setVisible(true);
+				PlacingIcons[2][3].setVisible(true);
+				PlacingIcons[3][1].setVisible(true);
+				PlacingIcons[3][3].setVisible(true);
 			break;
 			default:
-				System.out.println("Invalid ship num");
+				System.out.println("invalid rotaiton");
+			break;
+			}
+		break;
+		case 4:
+			switch(PlacingRotation){
+			case 0:
+				PlacingIcons[2][0].setVisible(true);
+				PlacingIcons[2][1].setVisible(true);
+				PlacingIcons[2][2].setVisible(true);
+				PlacingIcons[2][3].setVisible(true);
+				PlacingIcons[1][3].setVisible(true);
+				PlacingIcons[3][3].setVisible(true);
+			break;
+			case 1:
+				PlacingIcons[0][2].setVisible(true);
+				PlacingIcons[1][2].setVisible(true);
+				PlacingIcons[2][2].setVisible(true);
+				PlacingIcons[3][2].setVisible(true);
+				PlacingIcons[0][1].setVisible(true);
+				PlacingIcons[0][3].setVisible(true);
+			break;
+			case 2:
+				PlacingIcons[2][0].setVisible(true);
+				PlacingIcons[2][1].setVisible(true);
+				PlacingIcons[2][2].setVisible(true);
+				PlacingIcons[2][3].setVisible(true);
+				PlacingIcons[1][0].setVisible(true);
+				PlacingIcons[3][0].setVisible(true);
+			break;
+			case 3:
+				PlacingIcons[0][2].setVisible(true);
+				PlacingIcons[1][2].setVisible(true);
+				PlacingIcons[2][2].setVisible(true);
+				PlacingIcons[3][2].setVisible(true);
+				PlacingIcons[3][1].setVisible(true);
+				PlacingIcons[3][3].setVisible(true);
+			break;
+			default:
+				System.out.println("invalid rotaiton");
 			break;
 			}
 		break;
