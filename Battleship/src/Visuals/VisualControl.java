@@ -8,7 +8,7 @@ public class VisualControl {
 	public static JFrame Window = new JFrame("[=] BattlePi [=]");
 	public static JPanel BasePanel = new JPanel();
 	public static final Color ShipColour = Color.PINK;
-	public static JButton HoverButton;
+	public static JButton HoverButton,DestroyerButton,CruiserButton,BattleshipButton,CarrierButton;
 	
 	public static void SetupVisuals(){
 		GenerateVisuals.CreateWindow();
