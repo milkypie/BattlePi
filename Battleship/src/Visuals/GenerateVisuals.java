@@ -70,7 +70,7 @@ public class GenerateVisuals {
 		for(int XLooper = 0; XLooper<4; XLooper++){
 			for(int YLooper = 0; YLooper<4; YLooper++){
 				VisualControl.PlacingIcons[XLooper][YLooper] = new BoardSquare(570+(20*XLooper),370+(20*YLooper),Color.PINK);
-				if(XLooper==1&&(YLooper==1||YLooper==2)){
+				if(XLooper==2&&(YLooper==1||YLooper==2)){
 					VisualControl.PlacingIcons[XLooper][YLooper].setVisible(true);
 				}else{
 					VisualControl.PlacingIcons[XLooper][YLooper].setVisible(false);

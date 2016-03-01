@@ -8,6 +8,7 @@ public class Ship {
 	private Boolean[] PositionHit = new Boolean[6];
 	protected int Type,Rotation;
 	protected Location[] Positions = new Location[6];
+	
 	public Ship(Board BoardContainer,int InitialType,Location InitialPosition,int InitialRotation) throws CustomException{
 		this.Type = InitialType;
 		this.Rotation = InitialRotation;

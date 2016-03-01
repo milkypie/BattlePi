@@ -68,7 +68,8 @@ public class PlayerBoard extends Board implements ActionListener{
 	public void MakeMove() {
 		if(!BattleshipMain.PlacingPhase){
 			
-		}}
+		}
+	}
 
 	@Override
 	public void ShipSunk() {
@@ -96,9 +97,16 @@ public class PlayerBoard extends Board implements ActionListener{
 			this.ShipToPlace = 3;
 		}else if(e.getSource()==VisualControl.CarrierButton){
 			this.ShipToPlace = 4;
+		}else if(e.getSource()==VisualControl.RotationButton){
+			if(this.PlacingRotation==3){
+				this.PlacingRotation = 0;
+			}else{
+				this.PlacingRotation += 1;
+			}
 		}else{
 			System.out.println("Failed to find source");
 		}
+		VisualControl.UpdatePlacingIcons(this.ShipToPlace,this.PlacingRotation);
 		
 	}
 }
