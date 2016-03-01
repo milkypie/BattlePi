@@ -1,19 +1,19 @@
 package CustomComponents;
 
 import java.util.Random;
-
 import java.awt.Color;
-
 import javax.swing.JLabel;
 import Control.BattleshipMain;
 
 public class AIBoard extends Board{
+	
 	public AIBoard(){
 		super();
 	}
 
 	private int O, i, H, W;
 	private int[] HW= new int[2];
+	
 	@Override
 	public void PlacePieces() {
 		// TODO Auto-generated method stub
@@ -24,10 +24,10 @@ public class AIBoard extends Board{
 			this.Ships[0] = new Ship(this,0,new Location(HW[0],HW[1]),O);
 			O = RandomO();
 			Randomize(1,O);
-			this.Ships[1] = new Ship(this,1,new Location(290,290),2);
-			O = RandomO();
-			Randomize(2,O);
-			this.Ships[2] = new Ship(this,2,new Location(170,170),3);
+			this.Ships[1] = new Ship(this,1,new Location(HW[0],HW[1]),O);
+			//O = RandomO();
+			//Randomize(2,O);
+			//this.Ships[2] = new Ship(this,2,new Location(170,170),3);
 		} catch (CustomException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,7 +61,7 @@ public class AIBoard extends Board{
 		}
 	}
 	
-	public int[] Randomize(int shipno, int orientation) {
+	public void Randomize(int shipno, int orientation) {
 		Random generator = new Random();
 		if (shipno == 0) { //Destroyer
 			switch(orientation) {
@@ -70,50 +70,57 @@ public class AIBoard extends Board{
 				H = (50+(i*20));
 				i = (generator.nextInt(11) + 1);
 				W = (50+(i*20));
+				break;
 			case 2: //Should work
 				i = (generator.nextInt(12) + 1);
 				H = (50+(i*20));
 				i = (generator.nextInt(11) + 1);
 				W = (70+(i*20));
+				break;
 			case 1: //Should work
 				i = (generator.nextInt(11) + 1);
 				H = (70+(i*20));
 				i = (generator.nextInt(12) + 1);
 				W = (50+(i*20));
+				break;
 			case 3: //Should work
 				i = (generator.nextInt(11) + 1);
 				H = (50+(i*20));
 				i = (generator.nextInt(12) + 1);
 				W = (50+(i*20));
+				break;
 			}
 		}
 		else if (shipno == 1) { //Cruiser
 			switch(orientation) {
 				case 0: //Should work
-					i = (generator.nextInt(12) + 1);
-					H = (50+(i*20));
+					i = (generator.nextInt(10) + 1);
+					H = (90+(i*20));
 					i = (generator.nextInt(10) + 1);
 					W = (50+(i*20));
+					break;
 				case 2: //Should work
-					i = (generator.nextInt(12) + 1);
+					i = (generator.nextInt(10) + 1);
 					H = (50+(i*20));
 					i = (generator.nextInt(10) + 1);
 					W = (90+(i*20));
-				case 1: 
-					i = (generator.nextInt(11) + 1);
-					H = (70+(i*20));
+					break;
+				case 1:  //Should work
+					i = (generator.nextInt(10) + 1);
+					H = (90+(i*20));
 					i = (generator.nextInt(12) + 1);
 					W = (50+(i*20));
-				case 3: 
-					i = (generator.nextInt(11) + 1);
+					break;
+				case 3: //Should work
+					i = (generator.nextInt(10) + 1);
 					H = (50+(i*20));
 					i = (generator.nextInt(12) + 1);
 					W = (50+(i*20));
+					break;
 				}
 			}
 		HW[0] = H;
 		HW[1] = W;
-		return HW;
 	}
 	
 	public int RandomO() {
