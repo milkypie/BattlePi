@@ -22,12 +22,12 @@ public class AIBoard extends Board{
 			O = RandomO();
 			Randomize(0,O);
 			this.Ships[0] = new Ship(this,0,new Location(HW[0],HW[1]),O);
-			//O = RandomO();
-			//Randomize(1,O);
-			//this.Ships[1] = new Ship(this,1,new Location(290,290),2);
-			//O = RandomO();
-			//Randomize(2,O);
-			//this.Ships[2] = new Ship(this,2,new Location(170,170),3);
+			O = RandomO();
+			Randomize(1,O);
+			this.Ships[1] = new Ship(this,1,new Location(290,290),2);
+			O = RandomO();
+			Randomize(2,O);
+			this.Ships[2] = new Ship(this,2,new Location(170,170),3);
 		} catch (CustomException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
