@@ -19,8 +19,8 @@ public class AIBoard extends Board{
 			O = RandomO();
 			Randomize(0,O);
 			this.Ships[0] = new Ship(this,0,new Location(HW[0],HW[1]),O);
-			//this.Ships[3] = new Ship(this,1,new Location(110,110),2);
-			//this.Ships[4] = new Ship(this,4,new Location(170,170),3);
+			this.Ships[3] = new Ship(this,1,new Location(110,110),2);
+			this.Ships[4] = new Ship(this,4,new Location(170,170),3);
 		} catch (CustomException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
