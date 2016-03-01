@@ -19,6 +19,7 @@ public class Ship {
 		this.Positions[0] = InitialPosition;
 		int[] InitialSquare = BoardContainer.FindSquare(InitialPosition);
 		BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]].setBackground(VisualControl.ShipColour);
+		BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]].SetHasShip(true);
 		switch(InitialType){
 		case 0: // destroyer
 			this.Health = 2;
