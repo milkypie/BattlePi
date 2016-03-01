@@ -1,14 +1,10 @@
 package CustomComponents;
 
 import java.util.Random;
-<<<<<<< HEAD
-=======
 
 import java.awt.Color;
 
 import javax.swing.JLabel;
->>>>>>> branch 'working' of https://github.com/milkypie/BattlePi.git
-
 import Control.BattleshipMain;
 
 public class AIBoard extends Board{
