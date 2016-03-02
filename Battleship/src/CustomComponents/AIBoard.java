@@ -11,7 +11,7 @@ public class AIBoard extends Board{
 		super();
 	}
 
-	private int[] HW= new int[3];
+	private int[] RandomCoords= new int[3];
 	
 	@Override
 	public void PlacePieces() {
@@ -19,11 +19,9 @@ public class AIBoard extends Board{
 		
 		try {
 			Randomize(0);
-			this.Ships[0] = new Ship(this,0,new Location(HW[0],HW[1]),HW[2]);
+			this.Ships[0] = new Ship(this,0,new Location(RandomCoords[0],RandomCoords[1]),RandomCoords[2]);
 			Randomize(1);
-			this.Ships[1] = new Ship(this,1,new Location(HW[0],HW[1]),HW[2]);
-			//O = RandomO();
-			//Randomize(2,O);
+			this.Ships[1] = new Ship(this,1,new Location(RandomCoords[0],RandomCoords[1]),RandomCoords[2]);
 			//this.Ships[2] = new Ship(this,2,new Location(170,170),3);
 		} catch (CustomException e) {
 			// TODO Auto-generated catch block
@@ -61,32 +59,32 @@ public class AIBoard extends Board{
 	public void Randomize(int shipno) {
 		Random generator = new Random();
 		int i = generator.nextInt(4);
-		HW[2] = i;
+		RandomCoords[2] = i;
 		if (shipno == 0) { //Destroyer
 			switch(i) {
 			case 0: //Should work
 				i = (generator.nextInt(12) + 1);
-				HW[0] = (50+(i*20));
+				RandomCoords[0] = (50+(i*20));
 				i = (generator.nextInt(11) + 1);
-				HW[1] = (50+(i*20));
+				RandomCoords[1] = (50+(i*20));
 				break;
 			case 2: //Should work
 				i = (generator.nextInt(12) + 1);
-				HW[0] = (50+(i*20));
+				RandomCoords[0] = (50+(i*20));
 				i = (generator.nextInt(11) + 1);
-				HW[1] = (70+(i*20));
+				RandomCoords[1] = (70+(i*20));
 				break;
 			case 1: //Should work
 				i = (generator.nextInt(11) + 1);
-				HW[0] = (70+(i*20));
+				RandomCoords[0] = (70+(i*20));
 				i = (generator.nextInt(12) + 1);
-				HW[1] = (50+(i*20));
+				RandomCoords[1] = (50+(i*20));
 				break;
 			case 3: //Should work
 				i = (generator.nextInt(11) + 1);
-				HW[0] = (50+(i*20));
+				RandomCoords[0] = (50+(i*20));
 				i = (generator.nextInt(12) + 1);
-				HW[1] = (50+(i*20));
+				RandomCoords[1] = (50+(i*20));
 				break;
 			}
 		}
@@ -94,27 +92,27 @@ public class AIBoard extends Board{
 			switch(i) {
 				case 0: //Should work
 					i = (generator.nextInt(10) + 1);
-					HW[0] = (90+(i*20));
+					RandomCoords[0] = (90+(i*20));
 					i = (generator.nextInt(10) + 1);
-					HW[1] = (50+(i*20));
+					RandomCoords[1] = (50+(i*20));
 					break;
 				case 2: //Should work
 					i = (generator.nextInt(10) + 1);
-					HW[0] = (50+(i*20));
+					RandomCoords[0] = (50+(i*20));
 					i = (generator.nextInt(10) + 1);
-					HW[1] = (90+(i*20));
+					RandomCoords[1] = (90+(i*20));
 					break;
 				case 1:  //Should work
 					i = (generator.nextInt(10) + 1);
-					HW[0] = (90+(i*20));
+					RandomCoords[0] = (90+(i*20));
 					i = (generator.nextInt(12) + 1);
-					HW[1] = (50+(i*20));
+					RandomCoords[1] = (50+(i*20));
 					break;
 				case 3: //Should work
 					i = (generator.nextInt(10) + 1);
-					HW[0] = (50+(i*20));
+					RandomCoords[0] = (50+(i*20));
 					i = (generator.nextInt(12) + 1);
-					HW[1] = (50+(i*20));
+					RandomCoords[1] = (50+(i*20));
 					break;
 				}
 			}
