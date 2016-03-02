@@ -68,7 +68,7 @@ public class AIBoard extends Board{
 				i = (generator.nextInt(12) + 1);
 				HW[0] = (50+(i*20));
 				i = (generator.nextInt(11) + 1);
-				W = (50+(i*20));
+				HW[1] = (50+(i*20));
 				break;
 			case 2: //Should work
 				i = (generator.nextInt(12) + 1);
