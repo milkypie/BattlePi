@@ -26,8 +26,10 @@ public abstract class Board extends JPanel {
 	public int[] FindSquare(Location SearchLocation)throws CustomException{
 		for(int x = 0;x<12;x++){
 			for(int y = 0;y<12;y++){
-				if(Squares[x][y].getLocation().x<=SearchLocation.getXPos()&&Squares[x][y].getLocation().x+Squares[x][y].getWidth()>=SearchLocation.getXPos()
-						&&Squares[x][y].getLocation().y<=SearchLocation.getYPos()&&Squares[x][y].getLocation().y+Squares[x][y].getHeight()>=SearchLocation.getYPos()){
+				if(this.Squares[x][y].getLocation().x<=SearchLocation.getXPos()
+						&&this.Squares[x][y].getLocation().x+this.Squares[x][y].getWidth()>=SearchLocation.getXPos()
+						&&this.Squares[x][y].getLocation().y<=SearchLocation.getYPos()
+						&&this.Squares[x][y].getLocation().y+this.Squares[x][y].getHeight()>=SearchLocation.getYPos()){
 					int[] returnArray = new int[] {x,y};
 					return returnArray;
 				}
