@@ -14,7 +14,7 @@ import CustomComponents.CustomPanel;
 import Visuals.VisualControl;
 public class GenerateVisuals {
 	public static void CreateWindow(){
-		VisualControl.Window.setSize(700, 500);
+		VisualControl.Window.setSize(900, 700);
 		VisualControl.Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		VisualControl.Window.setVisible(true);
 		VisualControl.Window.setContentPane(CreateContentPane());
