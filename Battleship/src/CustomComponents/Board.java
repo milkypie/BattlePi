@@ -2,11 +2,14 @@ package CustomComponents;
 
 import java.awt.Color;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public abstract class Board extends JPanel {
 	protected Ship[] Ships = new Ship[5];
 	public BoardSquare[][] Squares = new BoardSquare[12][12];
+	protected JLabel NameLabel;
+	
 	public Board(){
 		super();
 		this.setLayout(null);
@@ -15,7 +18,7 @@ public abstract class Board extends JPanel {
 		for(int x=0;x<12;x++){
 			for(int y=0;y<12;y++){
 				this.Squares[x][y] = new BoardSquare(50+(20*x),50+(20*y));
-				this.add(Squares[x][y]);
+				this.add(this.Squares[x][y]);
 			}
 		}
 		
@@ -23,8 +26,10 @@ public abstract class Board extends JPanel {
 	public int[] FindSquare(Location SearchLocation)throws CustomException{
 		for(int x = 0;x<12;x++){
 			for(int y = 0;y<12;y++){
-				if(Squares[x][y].getLocation().x<=SearchLocation.getXPos()&&Squares[x][y].getLocation().x+Squares[x][y].getWidth()>=SearchLocation.getXPos()
-						&&Squares[x][y].getLocation().y<=SearchLocation.getYPos()&&Squares[x][y].getLocation().y+Squares[x][y].getHeight()>=SearchLocation.getYPos()){
+				if(this.Squares[x][y].getLocation().x<=SearchLocation.getXPos()
+						&&this.Squares[x][y].getLocation().x+this.Squares[x][y].getWidth()>=SearchLocation.getXPos()
+						&&this.Squares[x][y].getLocation().y<=SearchLocation.getYPos()
+						&&this.Squares[x][y].getLocation().y+this.Squares[x][y].getHeight()>=SearchLocation.getYPos()){
 					int[] returnArray = new int[] {x,y};
 					return returnArray;
 				}

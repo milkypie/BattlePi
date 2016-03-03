@@ -1,13 +1,24 @@
 package CustomComponents;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JLabel;
+
+import Visuals.VisualControl;
 import Control.BattleshipMain;
 
-public class PlayerBoard extends Board {
+public class PlayerBoard extends Board implements ActionListener{
 	private int ShipToPlace = 0,PlacingRotation = 0;
 	public PlayerBoard(){
 		super();
+		this.NameLabel = new JLabel();
+		this.NameLabel.setLocation(50, 0);
+		this.NameLabel.setForeground(Color.BLACK);
+		this.NameLabel.setText("Player Board");
+		this.NameLabel.setSize(100, 50);
+		this.add(this.NameLabel);
 	}
 
 	@Override
@@ -39,6 +50,7 @@ public class PlayerBoard extends Board {
 				try {
 					int[] CurrentSquare = FindSquare(CurrentLocation);
 					this.Squares[CurrentSquare[0]][CurrentSquare[1]].setBackground(Color.GRAY);
+					this.Squares[CurrentSquare[0]][CurrentSquare[1]].SetHasShip(false);
 				} catch (CustomException e) {
 					e.printStackTrace();
 				}
@@ -65,7 +77,8 @@ public class PlayerBoard extends Board {
 	public void MakeMove() {
 		if(!BattleshipMain.PlacingPhase){
 			
-		}}
+		}
+	}
 
 	@Override
 	public void ShipSunk() {
@@ -76,6 +89,33 @@ public class PlayerBoard extends Board {
 	@Override
 	public void Shoot() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("recieved button press");
+		if(e.getSource()==VisualControl.DestroyerButton){
+			this.ShipToPlace = 0;
+		}else if(e.getSource()==VisualControl.CruiserButton){
+			this.ShipToPlace = 1;
+		}else if(e.getSource()==VisualControl.BattleshipButton){
+			this.ShipToPlace = 2;
+		}else if(e.getSource()==VisualControl.HoverButton){
+			this.ShipToPlace = 3;
+		}else if(e.getSource()==VisualControl.CarrierButton){
+			this.ShipToPlace = 4;
+		}else if(e.getSource()==VisualControl.RotationButton){
+			if(this.PlacingRotation==3){
+				this.PlacingRotation = 0;
+			}else{
+				this.PlacingRotation += 1;
+			}
+		}else{
+			System.out.println("Failed to find source");
+		}
+		VisualControl.UpdatePlacingIcons(this.ShipToPlace,this.PlacingRotation);
 		
 	}
 }

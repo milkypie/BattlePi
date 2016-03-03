@@ -2,7 +2,7 @@ package CustomComponents;
 
 
 public class Location{
-	int XPos,YPos;
+	private int XPos,YPos;
 	public Location(int InitialX,int InitialY){
 		this.XPos = InitialX;
 		this.YPos = InitialY;
@@ -26,5 +26,11 @@ public class Location{
 	}
 	public void addYPos(int change){
 		this.YPos+=change;
+	}
+	public String toString(){
+		String returnString = "\n";
+		returnString = returnString+ "XPos: "+ this.XPos+ "\nYPos: "+ this.YPos;
+		
+		return returnString;
 	}
 }
