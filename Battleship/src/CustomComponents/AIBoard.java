@@ -9,6 +9,12 @@ public class AIBoard extends Board{
 	
 	public AIBoard(){
 		super();
+		this.NameLabel = new JLabel();
+		this.NameLabel.setLocation(50, 0);
+		this.NameLabel.setForeground(Color.BLACK);
+		this.NameLabel.setText("AI Board");
+		this.NameLabel.setSize(100, 50);
+		this.add(this.NameLabel);
 	}
 
 	private int[] RandomCoords= new int[3];
