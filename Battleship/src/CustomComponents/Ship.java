@@ -16,289 +16,179 @@ public class Ship {
 		this.Rotation = InitialRotation;
 		this.CurrentBoard  = BoardContainer;
 		for(int looper = 0;looper<6;looper++){
-			PositionHit[looper] = false;
+			this.PositionHit[looper] = false;
+			this.Positions[looper] = null;
 		}
 		this.Positions[0] = InitialPosition;
 		int[] InitialSquare = BoardContainer.FindSquare(InitialPosition);
-		BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-		BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]].SetHasShip(true);
-		try{
-			switch(InitialType){
-			case 0: // destroyer
-				this.Health = 2;
-				switch(InitialRotation){
-				case 0:
-					this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+20); //lower
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+1].SetHasShip(true);
-				break;
-				case 1:
-					this.Positions[1] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()); //lefter
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]].SetHasShip(true);
-				break;
-				case 2:
-					this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-20); //higher
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-1].SetHasShip(true);		
-				break;
-				case 3:
-					this.Positions[1] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()); //righter	
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]].SetHasShip(true);	
-				break;
-				default:
-					System.out.println("Rotaion index out of bounds");
-					throw new CustomException("Rotaion index out of bounds");
-				}
+		switch(InitialType){
+		case 0: // destroyer
+			this.Health = 2;
+			switch(InitialRotation){
+			case 0:
+				this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+20); //lower
 			break;
-			case 1: // cruiser
-				this.Health = 3;
-				switch(InitialRotation){
-				case 0:
-					this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+1].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+40);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+2].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+2].SetHasShip(true);
-				break;
-				case 1:
-					this.Positions[1] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos()-40,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]-2][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]].SetHasShip(true);
-				break;
-				case 2:
-					this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-1].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-40);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-2].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-2].SetHasShip(true);
-				break;
-				case 3:
-					this.Positions[1] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos()+40,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]+2][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+2][InitialSquare[1]].SetHasShip(true);
-				break;
-				default:
-					System.out.println("Rotaion index out of bounds");
-					throw new CustomException("Rotaion index out of bounds");
-				}
+			case 1:
+				this.Positions[1] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()); //lefter
 			break;
-			case 2: // battleship
-				this.Health = 4;
-				switch(InitialRotation){
-				case 0:
-					this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+1].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+40);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+2].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+2].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+60);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+3].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+3].SetHasShip(true);
-				break;
-				case 1:
-					this.Positions[1] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos()-40,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]-2][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-2][InitialSquare[1]].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos()-60,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]-3][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-3][InitialSquare[1]].SetHasShip(true);
-				break;
-				case 2:
-					this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-1].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-40);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-2].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-2].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-60);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-3].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-3].SetHasShip(true);
-				break;
-				case 3:
-					this.Positions[1] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos()+40,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]+2][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+2][InitialSquare[1]].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos()+60,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]+3][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+3][InitialSquare[1]].SetHasShip(true);
-				break;
-				default:
-					System.out.println("Rotaion index out of bounds");
-					throw new CustomException("Rotaion index out of bounds");
-				}
+			case 2:
+				this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-20); //higher
 			break;
-			case 3: // hover-craft
-				this.Health = 6;
-				switch(InitialRotation){
-				case 0:
-					this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+1].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]+1].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]+1].SetHasShip(true);
-					this.Positions[4] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()+40);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]+2].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]+2].SetHasShip(true);
-					this.Positions[5] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()+40);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]+2].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]+2].SetHasShip(true);
-				break;
-				case 1:
-					this.Positions[1] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]-1].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]+1].SetHasShip(true);
-					this.Positions[4] = new Location(InitialPosition.getXPos()-40,InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]-2][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-2][InitialSquare[1]-1].SetHasShip(true);
-					this.Positions[5] = new Location(InitialPosition.getXPos()-40,InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]-2][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-2][InitialSquare[1]+1].SetHasShip(true);
-				break;
-				case 2:
-					this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-1].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]-1].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]-1].SetHasShip(true);
-					this.Positions[4] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()-40);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]-2].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]-2].SetHasShip(true);
-					this.Positions[5] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()-40);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]-2].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]-2].SetHasShip(true);
-				break;
-				case 3:
-					this.Positions[1] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]+1].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]-1].SetHasShip(true);
-					this.Positions[4] = new Location(InitialPosition.getXPos()+40,InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]+2][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+2][InitialSquare[1]+1].SetHasShip(true);
-					this.Positions[5] = new Location(InitialPosition.getXPos()+40,InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]+2][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+2][InitialSquare[1]-1].SetHasShip(true);
-				break;
-				default:
-					System.out.println("Rotaion index out of bounds");
-					throw new CustomException("Rotaion index out of bounds");
-				}
-			break;
-			case 4: // carrier
-				this.Health = 6;
-				switch(InitialRotation){
-				case 0:
-					this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+1].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+40);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+2].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+2].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+60);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+3].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]+3].SetHasShip(true);
-					this.Positions[4] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()+60);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]+3].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]+3].SetHasShip(true);
-					this.Positions[5] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()+60);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]+3].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]+3].SetHasShip(true);
-				break;
-				case 1:
-					this.Positions[1] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos()-40,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]-2][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-2][InitialSquare[1]].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos()-60,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]-3][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-3][InitialSquare[1]].SetHasShip(true);
-					this.Positions[4] = new Location(InitialPosition.getXPos()-60,InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]-3][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-3][InitialSquare[1]+1].SetHasShip(true);
-					this.Positions[5] = new Location(InitialPosition.getXPos()-60,InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]-3][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-3][InitialSquare[1]-1].SetHasShip(true);
-				break;
-				case 2:
-					this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-1].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-40);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-2].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-2].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-60);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-3].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]][InitialSquare[1]-3].SetHasShip(true);
-					this.Positions[4] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()-60);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]-3].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]-3].SetHasShip(true);
-					this.Positions[5] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()-60);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]-3].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]-1][InitialSquare[1]-3].SetHasShip(true);
-				break;
-				case 3:
-					this.Positions[1] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+1][InitialSquare[1]].SetHasShip(true);
-					this.Positions[2] = new Location(InitialPosition.getXPos()+40,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]+2][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+2][InitialSquare[1]].SetHasShip(true);
-					this.Positions[3] = new Location(InitialPosition.getXPos()+60,InitialPosition.getYPos());
-					BoardContainer.Squares[InitialSquare[0]+3][InitialSquare[1]].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+3][InitialSquare[1]].SetHasShip(true);
-					this.Positions[4] = new Location(InitialPosition.getXPos()+60,InitialPosition.getYPos()+20);
-					BoardContainer.Squares[InitialSquare[0]+3][InitialSquare[1]+1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+3][InitialSquare[1]+1].SetHasShip(true);
-					this.Positions[5] = new Location(InitialPosition.getXPos()+60,InitialPosition.getYPos()-20);
-					BoardContainer.Squares[InitialSquare[0]+3][InitialSquare[1]-1].setBackground(VisualControl.ShipColour);
-					BoardContainer.Squares[InitialSquare[0]+3][InitialSquare[1]-1].SetHasShip(true);
-				break;
-				default:
-					System.out.println("Rotaion index out of bounds");
-					throw new CustomException("Rotaion index out of bounds");
-				}
+			case 3:
+				this.Positions[1] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()); //righter
 			break;
 			default:
-				System.out.println("something went wrong in the definition of a ship");
-				throw new CustomException("Ship type out of bounds");
+				System.out.println("Rotaion index out of bounds");
+				throw new CustomException("Rotaion index out of bounds");
+			}
+		break;
+		case 1: // cruiser
+			this.Health = 3;
+			switch(InitialRotation){
+			case 0:
+				this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+20);
+				this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+40);
+			break;
+			case 1:
+				this.Positions[1] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos());
+				this.Positions[2] = new Location(InitialPosition.getXPos()-40,InitialPosition.getYPos());
+			break;
+			case 2:
+				this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-20);
+				this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-40);
+			break;
+			case 3:
+				this.Positions[1] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos());
+				this.Positions[2] = new Location(InitialPosition.getXPos()+40,InitialPosition.getYPos());
+			break;
+			default:
+				System.out.println("Rotaion index out of bounds");
+				throw new CustomException("Rotaion index out of bounds");
+			}
+		break;
+		case 2: // battleship
+			this.Health = 4;
+			switch(InitialRotation){
+			case 0:
+				this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+20);
+				this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+40);
+				this.Positions[3] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+60);
+			break;
+			case 1:
+				this.Positions[1] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos());
+				this.Positions[2] = new Location(InitialPosition.getXPos()-40,InitialPosition.getYPos());
+				this.Positions[3] = new Location(InitialPosition.getXPos()-60,InitialPosition.getYPos());
+			break;
+			case 2:
+				this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-20);
+				this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-40);
+				this.Positions[3] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-60);
+			break;
+			case 3:
+				this.Positions[1] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos());
+				this.Positions[2] = new Location(InitialPosition.getXPos()+40,InitialPosition.getYPos());
+				this.Positions[3] = new Location(InitialPosition.getXPos()+60,InitialPosition.getYPos());				break;
+			default:
+				System.out.println("Rotaion index out of bounds");
+				throw new CustomException("Rotaion index out of bounds");
+			}
+		break;
+		case 3: // hover-craft
+			this.Health = 6;
+			switch(InitialRotation){
+			case 0:
+				this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+20);
+				this.Positions[2] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()+20);
+				this.Positions[3] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()+20);
+				this.Positions[4] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()+40);
+				this.Positions[5] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()+40);
+			break;
+			case 1:
+				this.Positions[1] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos());
+				this.Positions[2] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()-20);
+				this.Positions[3] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()+20);
+				this.Positions[4] = new Location(InitialPosition.getXPos()-40,InitialPosition.getYPos()-20);
+				this.Positions[5] = new Location(InitialPosition.getXPos()-40,InitialPosition.getYPos()+20);
+			break;
+			case 2:
+				this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-20);
+				this.Positions[2] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()-20);
+				this.Positions[3] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()-20);
+				this.Positions[4] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()-40);
+				this.Positions[5] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()-40);
+			break;
+			case 3:
+				this.Positions[1] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos());
+				this.Positions[2] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()+20);
+				this.Positions[3] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()-20);
+				this.Positions[4] = new Location(InitialPosition.getXPos()+40,InitialPosition.getYPos()+20);
+				this.Positions[5] = new Location(InitialPosition.getXPos()+40,InitialPosition.getYPos()-20);
+			break;
+			default:
+				System.out.println("Rotaion index out of bounds");
+				throw new CustomException("Rotaion index out of bounds");
+			}
+		break;
+		case 4: // carrier
+			this.Health = 6;
+			switch(InitialRotation){
+			case 0:
+				this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+20);
+				this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+40);
+				this.Positions[3] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()+60);
+				this.Positions[4] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()+60);
+				this.Positions[5] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()+60);
+			break;
+			case 1:
+				this.Positions[1] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos());
+				this.Positions[2] = new Location(InitialPosition.getXPos()-40,InitialPosition.getYPos());
+				this.Positions[3] = new Location(InitialPosition.getXPos()-60,InitialPosition.getYPos());
+				this.Positions[4] = new Location(InitialPosition.getXPos()-60,InitialPosition.getYPos()+20);
+				this.Positions[5] = new Location(InitialPosition.getXPos()-60,InitialPosition.getYPos()-20);
+			break;
+			case 2:
+				this.Positions[1] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-20);
+				this.Positions[2] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-40);
+				this.Positions[3] = new Location(InitialPosition.getXPos(),InitialPosition.getYPos()-60);
+				this.Positions[4] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos()-60);
+				this.Positions[5] = new Location(InitialPosition.getXPos()-20,InitialPosition.getYPos()-60);
+			break;
+			case 3:
+				this.Positions[1] = new Location(InitialPosition.getXPos()+20,InitialPosition.getYPos());
+				this.Positions[2] = new Location(InitialPosition.getXPos()+40,InitialPosition.getYPos());
+				this.Positions[3] = new Location(InitialPosition.getXPos()+60,InitialPosition.getYPos());
+				this.Positions[4] = new Location(InitialPosition.getXPos()+60,InitialPosition.getYPos()+20);
+				this.Positions[5] = new Location(InitialPosition.getXPos()+60,InitialPosition.getYPos()-20);
+			break;
+			default:
+				System.out.println("Rotaion index out of bounds");
+				throw new CustomException("Rotaion index out of bounds");
+			}
+		break;
+		default:
+			System.out.println("something went wrong in the definition of a ship");
+			throw new CustomException("Ship type out of bounds");
+		}
+		for(int looper = 0;looper<6;looper++){
+			if(this.Positions[looper] == null){
+				looper = 6;
+			}else{
+				int[] XY = BoardContainer.FindSquare(this.Positions[looper]);
+				if(BoardContainer.Squares[XY[0]][XY[1]].HasShip()){
+					throw new CustomException("There is already a ship there");
+				}
+			}
+		}
+		
+		try{
+			for(int looper = 0;looper<6;looper++){
+				if(this.Positions[looper]==null){
+					looper = 6;
+				}else{
+					int[] XY = BoardContainer.FindSquare(this.Positions[looper]);
+					BoardContainer.Squares[XY[0]][XY[1]].SetHasShip(true);
+					BoardContainer.Squares[XY[0]][XY[1]].setBackground(Color.PINK);
+				}
 			}
 		} catch (ArrayIndexOutOfBoundsException e){
 			int[] Square = new int[2];
