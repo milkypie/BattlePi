@@ -8,7 +8,7 @@ import javax.swing.border.Border;
 
 public class BoardSquare extends JPanel {
 	public Border SquareBorder;
-	protected boolean HasShip = false;
+	protected int HasShip = -1;
 	public BoardSquare(int XPos,int YPos){
 		super();
 		SquareBorder = BorderFactory.createLineBorder(Color.BLACK);
@@ -27,10 +27,10 @@ public class BoardSquare extends JPanel {
 		this.setBorder(SquareBorder);
 		this.setLocation(XPos, YPos);
 	}
-	public void SetHasShip(boolean NewHasShip){
+	public void SetHasShip(int NewHasShip){
 		this.HasShip = NewHasShip;
 	}
-	public boolean HasShip(){
+	public int HasShip(){
 		return this.HasShip;
 	}
 }

@@ -44,7 +44,7 @@ public class PlayerBoard extends Board implements ActionListener{
 				try {
 					int[] CurrentSquare = FindSquare(CurrentLocation);
 					this.Squares[CurrentSquare[0]][CurrentSquare[1]].setBackground(Color.GRAY);
-					this.Squares[CurrentSquare[0]][CurrentSquare[1]].SetHasShip(false);
+					this.Squares[CurrentSquare[0]][CurrentSquare[1]].SetHasShip(-1);
 				} catch (CustomException e) {
 					e.printStackTrace();
 				}
