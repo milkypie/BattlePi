@@ -77,6 +77,8 @@ public class PlayerBoard extends Board implements ActionListener{
 		VisualControl.BasePanel.remove(VisualControl.HoverButton);
 		VisualControl.BasePanel.remove(VisualControl.DestroyerButton);
 		VisualControl.BasePanel.remove(VisualControl.RotationButton);
+		VisualControl.BasePanel.remove(VisualControl.DoneButton);
+		
 	}
 
 	@Override
