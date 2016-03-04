@@ -36,17 +36,6 @@ public class BattleshipMain {
 		PlayerBoard.PlacePieces();
 		AIBoard.PlacePieces();
 		
-		while(!GameWon){
-			PlayerBoard.MakeMove();
-			if(!GameWon){
-				AIBoard.MakeMove();
-			}
-		}
-		if(PlayerWon){
-			PlayerWin();		
-		}else{
-			AIWin();
-		}
 	}
 	public static void PlayerWin(){
 		

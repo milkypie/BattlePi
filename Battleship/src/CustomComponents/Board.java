@@ -10,6 +10,7 @@ public abstract class Board extends JPanel {
 	public BoardSquare[][] Squares = new BoardSquare[12][12];
 	protected JLabel NameLabel;
 	protected int ShipsPlaced = 0;
+	public boolean[][] BeenShot = new boolean[12][12];
 	
 	public Board(){
 		super();
@@ -19,6 +20,7 @@ public abstract class Board extends JPanel {
 		for(int x=0;x<12;x++){
 			for(int y=0;y<12;y++){
 				this.Squares[x][y] = new BoardSquare(50+(20*x),50+(20*y));
+				this.BeenShot[x][y] = false;
 				this.add(this.Squares[x][y]);
 			}
 		}
