@@ -62,7 +62,7 @@ public class PlayerBoard extends Board implements ActionListener{
 				RemoveShip(this.ShipToPlace);
 			}
 			try {
-				this.Ships[this.ShipToPlace] = new Ship(this,this.ShipToPlace, new Location(50+(20*SquareX),50+(20*SquareY)),this.PlacingRotation);
+				this.Ships[this.ShipToPlace] = new Ship(this,this.ShipToPlace, new Location(50+(20*SquareX),50+(20*SquareY)),this.PlacingRotation,true);
 				this.ShipsPlaced++;
 			} catch (CustomException e) {
 				e.printStackTrace();

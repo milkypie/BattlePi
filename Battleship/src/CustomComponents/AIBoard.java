@@ -32,7 +32,7 @@ public class AIBoard extends Board {
 					int Orientation = RandGen.nextInt(4);
 					int XSquare = RandGen.nextInt(12);
 					int YSquare = RandGen.nextInt(12);
-					this.Ships[looper] = new Ship(this,(looper),new Location(50+(20*XSquare),50+(20*YSquare)),Orientation);
+					this.Ships[looper] = new Ship(this,(looper),new Location(50+(20*XSquare),50+(20*YSquare)),Orientation,false);
 					break;
 				}catch(CustomException e){
 					System.out.println("found a custom exception");

@@ -11,7 +11,7 @@ public class Ship {
 	protected int Type,Rotation;
 	protected Location[] Positions = new Location[6];
 	
-	public Ship(Board BoardContainer,int InitialType,Location InitialPosition,int InitialRotation) throws CustomException{
+	public Ship(Board BoardContainer,int InitialType,Location InitialPosition,int InitialRotation, boolean ChangeColour) throws CustomException{
 		this.Type = InitialType;
 		this.Rotation = InitialRotation;
 		this.CurrentBoard  = BoardContainer;
@@ -189,7 +189,9 @@ public class Ship {
 					int[] XY = BoardContainer.FindSquare(this.Positions[looper]);
 					System.out.println(XY[0]+", "+XY[1]);
 					BoardContainer.Squares[XY[0]][XY[1]].SetHasShip(this.Type);
-					BoardContainer.Squares[XY[0]][XY[1]].setBackground(Color.PINK);
+					if (ChangeColour) {
+						BoardContainer.Squares[XY[0]][XY[1]].setBackground(Color.PINK);
+					}
 				}
 			}
 		} catch (ArrayIndexOutOfBoundsException e){
