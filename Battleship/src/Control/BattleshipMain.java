@@ -10,7 +10,7 @@ import Input.MouseInput;
 public class BattleshipMain {
 	/*TODO
 	 * 	custom JPanels
-	 *  Action Listners (for initial placing)
+	 *  Action Listeners (for initial placing)
 	 *  
 	 */
 	public static Boolean GameWon = false,PlayerWon = false, PlacingPhase = true;
@@ -21,6 +21,8 @@ public class BattleshipMain {
 	public static void main(String[] args) { 
 		AIBoard = new AIBoard();
 		PlayerBoard = new PlayerBoard();
+		
+		AIBoard.setOtherPlayer(PlayerBoard);
 		
 		PlayerMouseHandler = new MouseInput(PlayerBoard);
 		AIMouseHandler = new MouseInput(AIBoard);

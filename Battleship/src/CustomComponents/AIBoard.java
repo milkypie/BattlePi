@@ -9,8 +9,12 @@ import javax.swing.JLabel;
 
 import Control.BattleshipMain;
 
+
 public class AIBoard extends Board {
-	
+
+	private	int SquareX, SquareY;
+	private PlayerBoard OpponentBoard;
+
 	public AIBoard(){
 		super();
 		this.NameLabel = new JLabel();
@@ -32,7 +36,7 @@ public class AIBoard extends Board {
 					int Orientation = RandGen.nextInt(4);
 					int XSquare = RandGen.nextInt(12);
 					int YSquare = RandGen.nextInt(12);
-					this.Ships[looper] = new Ship(this,(looper),new Location(50+(20*XSquare),50+(20*YSquare)),Orientation,true);//only true for testing, must be false on completion
+					this.Ships[looper] = new Ship(this,(looper),new Location(50+(20*XSquare),50+(20*YSquare)),Orientation,false);//only true for testing, must be false on completion
 					break;
 				}catch(CustomException e){
 					System.out.println("found a custom exception");
@@ -56,10 +60,29 @@ public class AIBoard extends Board {
 		
 	}
 
+	public void setOtherPlayer(PlayerBoard b) {
+		this.OpponentBoard = b;
+	}
+	
 	@Override
 	public void Shoot() {
-		// TODO Auto-generated method stub
+		Random RandGen = new Random();
+		do {
+			SquareX = RandGen.nextInt(12);
+			SquareY = RandGen.nextInt(12);
+		}while (this.OpponentBoard.BeenShot[SquareX][SquareY]);
 		
+		if(this.OpponentBoard.Squares[SquareX][SquareY].HasShip!=-1){
+			try {
+				this.OpponentBoard.Ships[this.OpponentBoard.Squares[SquareX][SquareY].HasShip].Shoot(new Location(50+(20*SquareX),50+(20*SquareY)));
+			} catch (CustomException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.OpponentBoard.Squares[SquareX][SquareY].setBackground(Color.GREEN);
+		}else{
+			this.OpponentBoard.Squares[SquareX][SquareY].setBackground(Color.RED);
+		}
 	}
 
 	@Override
