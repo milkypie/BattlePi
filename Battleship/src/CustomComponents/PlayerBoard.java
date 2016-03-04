@@ -25,12 +25,6 @@ public class PlayerBoard extends Board implements ActionListener{
 	public void PlacePieces() {
 		// TODO Auto-generated method stub
 		
-		try{
-			this.Ships[1] = new Ship(this, 1,new Location(110,110),2);
-			this.Ships[2] = new Ship(this,2,new Location(170,170),3);
-		}catch(CustomException e){
-			e.printStackTrace();
-		}
 		
 	}
 	public void setPlaceShip(int NewShip){
@@ -112,6 +106,8 @@ public class PlayerBoard extends Board implements ActionListener{
 			}else{
 				this.PlacingRotation += 1;
 			}
+		}else if(e.getSource()==VisualControl.DoneButton){
+			
 		}else{
 			System.out.println("Failed to find source");
 		}

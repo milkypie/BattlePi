@@ -206,6 +206,7 @@ public class Ship {
 		for(int looper = this.Health;looper<6;looper++){
 			PositionHit[looper] = true;
 		}
+		System.out.println("\nship created successfully"+this);
 		
 	}
 

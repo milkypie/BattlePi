@@ -1,6 +1,5 @@
 package CustomComponents;
 
-
 public class Location{
 	private int XPos,YPos;
 	public Location(int InitialX,int InitialY){

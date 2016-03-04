@@ -28,8 +28,8 @@ public class BattleshipMain {
 		PlayerBoard.addMouseListener(PlayerMouseHandler);
 		AIBoard.addMouseListener(AIMouseHandler);
 		
-		PlayerBoard.setLocation(0, 0);
-		AIBoard.setLocation(320, 0);
+		PlayerBoard.setLocation(10, 10);
+		AIBoard.setLocation(330, 10);
 
 		VisualControl.SetupVisuals();
 		

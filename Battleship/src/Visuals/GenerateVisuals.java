@@ -64,7 +64,13 @@ public class GenerateVisuals {
 		VisualControl.RotationButton.setSize(80,50);
 		VisualControl.RotationButton.addActionListener(BattleshipMain.PlayerBoard);
 		
+		VisualControl.DoneButton = new JButton("Done");
+		VisualControl.DoneButton.setLocation(280,340);
+		VisualControl.DoneButton.setSize(80,50);
+		VisualControl.DoneButton.addActionListener(BattleshipMain.PlayerBoard);
+		
 		VisualControl.BasePanel.add(VisualControl.RotationButton);
+		VisualControl.BasePanel.add(VisualControl.DoneButton);
 		
 		VisualControl.PlacingIcons = new BoardSquare[4][4];
 		for(int XLooper = 0; XLooper<4; XLooper++){
