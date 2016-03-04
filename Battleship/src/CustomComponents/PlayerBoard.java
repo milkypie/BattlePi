@@ -52,6 +52,8 @@ public class PlayerBoard extends Board implements ActionListener{
 				Looper = 6;
 			}
 		}
+		this.Ships[this.ShipToPlace] = null;
+		this.ShipsPlaced--;
 	}
 	
 	public void ClickAction(int SquareX,int SquareY){
@@ -61,10 +63,20 @@ public class PlayerBoard extends Board implements ActionListener{
 			}
 			try {
 				this.Ships[this.ShipToPlace] = new Ship(this,this.ShipToPlace, new Location(50+(20*SquareX),50+(20*SquareY)),this.PlacingRotation);
+				this.ShipsPlaced++;
 			} catch (CustomException e) {
 				e.printStackTrace();
 			}
 		}
+	}
+	public void ChangePhase(){
+		BattleshipMain.PlacingPhase = false;
+		VisualControl.BasePanel.remove(VisualControl.BattleshipButton);
+		VisualControl.BasePanel.remove(VisualControl.CarrierButton);
+		VisualControl.BasePanel.remove(VisualControl.CruiserButton);
+		VisualControl.BasePanel.remove(VisualControl.HoverButton);
+		VisualControl.BasePanel.remove(VisualControl.DestroyerButton);
+		VisualControl.BasePanel.remove(VisualControl.RotationButton);
 	}
 
 	@Override
@@ -107,7 +119,11 @@ public class PlayerBoard extends Board implements ActionListener{
 				this.PlacingRotation += 1;
 			}
 		}else if(e.getSource()==VisualControl.DoneButton){
-			
+			if(this.ShipsPlaced==5){
+				ChangePhase();
+			}else{
+				System.out.println("only placed: "+this.ShipsPlaced);
+			}
 		}else{
 			System.out.println("Failed to find source");
 		}
