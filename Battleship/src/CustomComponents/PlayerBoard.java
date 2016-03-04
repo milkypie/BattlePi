@@ -98,7 +98,7 @@ public class PlayerBoard extends Board implements ActionListener{
 	public void ShipSunk() {
 		ShipsPlaced--;
 		if (ShipsPlaced==0){
-			BattleshipMain.PlayerWin();
+			BattleshipMain.AIWin();
 		}
 	}
 
