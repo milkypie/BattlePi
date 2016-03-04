@@ -9,6 +9,7 @@ public abstract class Board extends JPanel {
 	protected Ship[] Ships = new Ship[5];
 	public BoardSquare[][] Squares = new BoardSquare[12][12];
 	protected JLabel NameLabel;
+	protected int ShipsPlaced = 0;
 	
 	public Board(){
 		super();
