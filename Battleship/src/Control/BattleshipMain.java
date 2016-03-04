@@ -32,7 +32,7 @@ public class BattleshipMain {
 		AIBoard.setLocation(330, 10);
 
 		VisualControl.SetupVisuals();
-		
+		VisualControl.BasePanel.updateUI();
 		PlayerBoard.PlacePieces();
 		AIBoard.PlacePieces();
 		
