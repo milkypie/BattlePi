@@ -2,10 +2,14 @@ package CustomComponents;
 
 import java.util.Random;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
+
 import Control.BattleshipMain;
 
-public class AIBoard extends Board{
+public class AIBoard extends Board {
 	
 	public AIBoard(){
 		super();
@@ -16,8 +20,6 @@ public class AIBoard extends Board{
 		this.NameLabel.setSize(100, 50);
 		this.add(this.NameLabel);
 	}
-
-	private int[] RandomCoords= new int[3];
 	
 	@Override
 	public void PlacePieces() {
