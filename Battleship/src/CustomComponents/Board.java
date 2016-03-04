@@ -24,7 +24,7 @@ public abstract class Board extends JPanel {
 		
 	}
 	public int[] FindSquare(Location SearchLocation)throws CustomException{
-		if(SearchLocation.getXPos()>=70&&SearchLocation.getYPos()>=70){
+		if(SearchLocation.getXPos()>=50&&SearchLocation.getYPos()>=50){
 			for(int x = 0;x<12;x++){
 				for(int y = 0;y<12;y++){
 					if(this.Squares[x][y].getLocation().x<=SearchLocation.getXPos()

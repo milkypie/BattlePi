@@ -185,7 +185,9 @@ public class Ship {
 				if(this.Positions[looper]==null){
 					looper = 6;
 				}else{
+					System.out.println(this.Positions[looper]);
 					int[] XY = BoardContainer.FindSquare(this.Positions[looper]);
+					System.out.println(XY[0]+", "+XY[1]);
 					BoardContainer.Squares[XY[0]][XY[1]].SetHasShip(this.Type);
 					BoardContainer.Squares[XY[0]][XY[1]].setBackground(Color.PINK);
 				}

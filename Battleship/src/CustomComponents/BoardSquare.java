@@ -14,7 +14,7 @@ public class BoardSquare extends JPanel {
 		SquareBorder = BorderFactory.createLineBorder(Color.BLACK);
 		this.setLayout(null);
 		this.setBackground(Color.GRAY);
-		this.setSize(20, 20);
+		this.setSize(19, 19);
 		this.setBorder(SquareBorder);
 		this.setLocation(XPos, YPos);
 	}
