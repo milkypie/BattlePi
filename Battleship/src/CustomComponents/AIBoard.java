@@ -22,17 +22,37 @@ public class AIBoard extends Board{
 	@Override
 	public void PlacePieces() {
 		// TODO Auto-generated method stub
+		Random RandGen = new Random();
 		
-		try {
-			Randomize(0);
-			this.Ships[0] = new Ship(this,0,new Location(RandomCoords[0],RandomCoords[1]),RandomCoords[2]);
-			Randomize(1);
-			this.Ships[1] = new Ship(this,1,new Location(RandomCoords[0],RandomCoords[1]),RandomCoords[2]);
-			//this.Ships[2] = new Ship(this,2,new Location(170,170),3);
-		} catch (CustomException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for(int looper = 0;looper<5;looper++){
+			
+			while(true){
+				try{
+					int Orientation = RandGen.nextInt(4);
+					int XSquare = RandGen.nextInt(12);
+					int YSquare = RandGen.nextInt(12);
+					this.Ships[looper] = new Ship(this,(looper),new Location(50+(20*XSquare),50+(20*YSquare)),Orientation);
+					break;
+				}catch(CustomException e){
+					System.out.println("found a custom exception");
+				}catch(Exception e){
+					System.out.println("found a different error");
+				}
+			}
 		}
+		
+		
+		
+		//try {
+			//Randomize(0);
+			//this.Ships[0] = new Ship(this,0,new Location(RandomCoords[0],RandomCoords[1]),RandomCoords[2]);
+			//Randomize(1);
+			//this.Ships[1] = new Ship(this,1,new Location(RandomCoords[0],RandomCoords[1]),RandomCoords[2]);
+			//this.Ships[2] = new Ship(this,2,new Location(170,170),3);
+		//} catch (CustomException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		//}
 		
 	}
 
