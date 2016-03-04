@@ -40,10 +40,10 @@ public class BattleshipMain {
 		
 	}
 	public static void PlayerWin(){
-		
+		System.out.println("Player 1 Wins!");
 	}
 	public static void AIWin(){
-		
+		System.out.println("The Magnificent AI Wins!");
 	}
 
 }

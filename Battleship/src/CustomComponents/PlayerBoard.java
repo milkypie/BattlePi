@@ -96,8 +96,10 @@ public class PlayerBoard extends Board implements ActionListener{
 
 	@Override
 	public void ShipSunk() {
-		// TODO Auto-generated method stub
-		
+		ShipsPlaced--;
+		if (ShipsPlaced==0){
+			BattleshipMain.PlayerWin();
+		}
 	}
 
 	@Override

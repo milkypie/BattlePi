@@ -224,7 +224,8 @@ public class Ship {
 					PositionHit[looper] = true;
 					Health--;
 					if(Health == 0){
-						CurrentBoard.ShipSunk();	
+						CurrentBoard.ShipSunk();
+						System.out.println("Ship no: " + this.Type + "has been sunk");
 					}
 					return true;
 				}

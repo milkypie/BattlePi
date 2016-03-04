@@ -14,6 +14,7 @@ public class AIBoard extends Board {
 
 	private	int SquareX, SquareY;
 	private PlayerBoard OpponentBoard;
+	private int ShipsPlaced =  5;
 
 	public AIBoard(){
 		super();
@@ -56,8 +57,10 @@ public class AIBoard extends Board {
 
 	@Override
 	public void ShipSunk() {
-		// TODO Auto-generated method stub
-		
+		ShipsPlaced--;
+		if (ShipsPlaced==0){
+			BattleshipMain.PlayerWin();
+		}
 	}
 
 	public void setOtherPlayer(PlayerBoard b) {
