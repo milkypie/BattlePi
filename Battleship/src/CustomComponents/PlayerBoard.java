@@ -78,6 +78,12 @@ public class PlayerBoard extends Board implements ActionListener{
 		VisualControl.BasePanel.remove(VisualControl.DestroyerButton);
 		VisualControl.BasePanel.remove(VisualControl.RotationButton);
 		VisualControl.BasePanel.remove(VisualControl.DoneButton);
+		for(int x =0;x<4;x++){
+			for(int y=0;y<4;y++){
+				VisualControl.BasePanel.remove(VisualControl.PlacingIcons[x][y]);
+			}
+		}
+		VisualControl.BasePanel.updateUI();
 		
 	}
 
