@@ -3,6 +3,9 @@ package Control;
 import Visuals.VisualControl;
 import CustomComponents.Action;
 import CustomComponents.Board;
+
+import javax.swing.JOptionPane;
+
 import CustomComponents.AIBoard;
 import CustomComponents.PlayerBoard;
 import Input.MouseInput;
@@ -40,10 +43,12 @@ public class BattleshipMain {
 		
 	}
 	public static void PlayerWin(){
-		System.out.println("Player 1 Wins!");
+		JOptionPane.showMessageDialog(
+			    null, "Player 1 wins!");
 	}
 	public static void AIWin(){
-		System.out.println("The Magnificent AI Wins!");
+		JOptionPane.showMessageDialog(
+			    null, "The Magnificent AI wins!");
 	}
 
 }
