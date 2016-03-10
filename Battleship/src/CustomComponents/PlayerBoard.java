@@ -102,10 +102,10 @@ public class PlayerBoard extends Board implements ActionListener{
 		}
 	}
 
-	@Override
-	public void Shoot() {
+	public void ShootEmptyPiece(int XPos,int YPos) {
 		// TODO Auto-generated method stub
-		
+		this.Squares[XPos][YPos].setBackground(Color.RED);
+		this.BeenShot[XPos][YPos]= true;
 	}
 
 	@Override

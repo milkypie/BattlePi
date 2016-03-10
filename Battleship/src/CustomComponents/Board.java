@@ -45,7 +45,7 @@ public abstract class Board extends JPanel {
 	
 	public abstract void ClickAction(int Squarex,int SquareY);
 	
-	public abstract void Shoot();
+	public abstract void ShootEmptyPiece(int XPos,int YPos);
 	
 	public abstract void PlacePieces();
 	

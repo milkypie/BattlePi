@@ -25,8 +25,6 @@ public class BattleshipMain {
 		AIBoard = new AIBoard();
 		PlayerBoard = new PlayerBoard();
 		
-		AIBoard.setOtherPlayer(PlayerBoard);
-		
 		PlayerMouseHandler = new MouseInput(PlayerBoard);
 		AIMouseHandler = new MouseInput(AIBoard);
 		
@@ -44,7 +42,8 @@ public class BattleshipMain {
 	}
 	public static void PlayerWin(){
 		JOptionPane.showMessageDialog(
-			    null, "Player 1 wins!");
+			    null, "You have won!");
+		
 	}
 	public static void AIWin(){
 		JOptionPane.showMessageDialog(

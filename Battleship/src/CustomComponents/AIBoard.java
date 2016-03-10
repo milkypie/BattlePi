@@ -13,7 +13,6 @@ import Control.BattleshipMain;
 public class AIBoard extends Board {
 
 	private	int SquareX, SquareY;
-	private PlayerBoard OpponentBoard;
 	private int ShipsPlaced =  5;
 
 	public AIBoard(){
@@ -62,29 +61,27 @@ public class AIBoard extends Board {
 			BattleshipMain.PlayerWin();
 		}
 	}
-
-	public void setOtherPlayer(PlayerBoard b) {
-		this.OpponentBoard = b;
-	}
 	
-	@Override
 	public void Shoot() {
 		Random RandGen = new Random();
 		do {
 			SquareX = RandGen.nextInt(12);
 			SquareY = RandGen.nextInt(12);
-		}while (this.OpponentBoard.BeenShot[SquareX][SquareY]);
+		}while (BattleshipMain.PlayerBoard.BeenShot[SquareX][SquareY]);
 		
-		if(this.OpponentBoard.Squares[SquareX][SquareY].HasShip!=-1){
+		System.out.println("AI shot at square :"+SquareX+", "+SquareY);
+		
+		if(BattleshipMain.PlayerBoard.Squares[SquareX][SquareY].HasShip!=-1){
 			try {
-				this.OpponentBoard.Ships[this.OpponentBoard.Squares[SquareX][SquareY].HasShip].Shoot(new Location(50+(20*SquareX),50+(20*SquareY)));
+				BattleshipMain.PlayerBoard.Ships[BattleshipMain.PlayerBoard.Squares[SquareX][SquareY].HasShip].Shoot(new Location(50+(20*SquareX),50+(20*SquareY)));
+				BattleshipMain.PlayerBoard.BeenShot[SquareX][SquareY] = true;
 			} catch (CustomException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			this.OpponentBoard.Squares[SquareX][SquareY].setBackground(Color.GREEN);
+			BattleshipMain.PlayerBoard.Squares[SquareX][SquareY].setBackground(Color.GREEN);
 		}else{
-			this.OpponentBoard.Squares[SquareX][SquareY].setBackground(Color.RED);
+			BattleshipMain.PlayerBoard.ShootEmptyPiece(SquareX,SquareY);
 		}
 	}
 
@@ -111,6 +108,12 @@ public class AIBoard extends Board {
 			}
 			
 		}
+	}
+
+	@Override
+	public void ShootEmptyPiece(int XPos, int YPos) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
