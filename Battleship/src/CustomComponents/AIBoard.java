@@ -89,7 +89,7 @@ public class AIBoard extends Board {
 	
 	public void Shoot(int SquareX,int SquareY) {
 		
-		System.out.println("AI shot at square :"+SquareX+", "+SquareY);
+		System.out.println("\nAI shot at square :"+SquareX+", "+SquareY);
 		
 		if(BattleshipMain.PlayerBoard.Squares[SquareX][SquareY].HasShip!=-1){
 			try {
