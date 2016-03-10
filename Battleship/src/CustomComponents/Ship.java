@@ -11,7 +11,7 @@ public class Ship {
 	protected int Type,Rotation;
 	protected Location[] Positions = new Location[6];
 	
-	public Ship(Board BoardContainer,int InitialType,Location InitialPosition,int InitialRotation) throws CustomException{
+	public Ship(Board BoardContainer,int InitialType,Location InitialPosition,int InitialRotation, boolean ChangeColour) throws CustomException{
 		this.Type = InitialType;
 		this.Rotation = InitialRotation;
 		this.CurrentBoard  = BoardContainer;
@@ -174,7 +174,7 @@ public class Ship {
 				looper = 6;
 			}else{
 				int[] XY = BoardContainer.FindSquare(this.Positions[looper]);
-				if(BoardContainer.Squares[XY[0]][XY[1]].HasShip()){
+				if(BoardContainer.Squares[XY[0]][XY[1]].HasShip() != -1 ){
 					throw new CustomException("There is already a ship there");
 				}
 			}
@@ -185,9 +185,13 @@ public class Ship {
 				if(this.Positions[looper]==null){
 					looper = 6;
 				}else{
+					System.out.println(this.Positions[looper]);
 					int[] XY = BoardContainer.FindSquare(this.Positions[looper]);
-					BoardContainer.Squares[XY[0]][XY[1]].SetHasShip(true);
-					BoardContainer.Squares[XY[0]][XY[1]].setBackground(Color.PINK);
+					System.out.println(XY[0]+", "+XY[1]);
+					BoardContainer.Squares[XY[0]][XY[1]].SetHasShip(this.Type);
+					if (ChangeColour) {
+						BoardContainer.Squares[XY[0]][XY[1]].setBackground(Color.PINK);
+					}
 				}
 			}
 		} catch (ArrayIndexOutOfBoundsException e){
@@ -196,7 +200,7 @@ public class Ship {
 				if(this.Positions[PosLooper]!=null){
 					Square = BoardContainer.FindSquare(this.Positions[PosLooper]);
 					BoardContainer.Squares[Square[0]][Square[1]].setBackground(Color.GRAY);
-					BoardContainer.Squares[Square[0]][Square[1]].SetHasShip(false);
+					BoardContainer.Squares[Square[0]][Square[1]].SetHasShip(-1);
 					this.Positions[PosLooper] = null;
 				}else{
 					PosLooper = 6;
@@ -220,7 +224,8 @@ public class Ship {
 					PositionHit[looper] = true;
 					Health--;
 					if(Health == 0){
-						CurrentBoard.ShipSunk();	
+						CurrentBoard.ShipSunk();
+						System.out.println("Ship no: " + this.Type + "has been sunk");
 					}
 					return true;
 				}

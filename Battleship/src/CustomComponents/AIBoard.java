@@ -2,11 +2,19 @@ package CustomComponents;
 
 import java.util.Random;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
+
 import Control.BattleshipMain;
 
-public class AIBoard extends Board{
-	
+
+public class AIBoard extends Board {
+
+	private	int SquareX, SquareY;
+	private int ShipsPlaced =  5;
+
 	public AIBoard(){
 		super();
 		this.NameLabel = new JLabel();
@@ -16,8 +24,6 @@ public class AIBoard extends Board{
 		this.NameLabel.setSize(100, 50);
 		this.add(this.NameLabel);
 	}
-
-	private int[] RandomCoords= new int[3];
 	
 	@Override
 	public void PlacePieces() {
@@ -30,7 +36,7 @@ public class AIBoard extends Board{
 					int Orientation = RandGen.nextInt(4);
 					int XSquare = RandGen.nextInt(12);
 					int YSquare = RandGen.nextInt(12);
-					this.Ships[looper] = new Ship(this,(looper),new Location(50+(20*XSquare),50+(20*YSquare)),Orientation);
+					this.Ships[looper] = new Ship(this,(looper),new Location(50+(20*XSquare),50+(20*YSquare)),Orientation,false);//only true for testing, must be false on completion
 					break;
 				}catch(CustomException e){
 					System.out.println("found a custom exception");
@@ -50,22 +56,64 @@ public class AIBoard extends Board{
 
 	@Override
 	public void ShipSunk() {
-		// TODO Auto-generated method stub
-		
+		ShipsPlaced--;
+		if (ShipsPlaced==0){
+			BattleshipMain.PlayerWin();
+		}
 	}
-
-	@Override
+	
 	public void Shoot() {
-		// TODO Auto-generated method stub
+		Random RandGen = new Random();
+		do {
+			SquareX = RandGen.nextInt(12);
+			SquareY = RandGen.nextInt(12);
+		}while (BattleshipMain.PlayerBoard.BeenShot[SquareX][SquareY]);
 		
+		System.out.println("AI shot at square :"+SquareX+", "+SquareY);
+		
+		if(BattleshipMain.PlayerBoard.Squares[SquareX][SquareY].HasShip!=-1){
+			try {
+				BattleshipMain.PlayerBoard.Ships[BattleshipMain.PlayerBoard.Squares[SquareX][SquareY].HasShip].Shoot(new Location(50+(20*SquareX),50+(20*SquareY)));
+				BattleshipMain.PlayerBoard.BeenShot[SquareX][SquareY] = true;
+			} catch (CustomException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			BattleshipMain.PlayerBoard.Squares[SquareX][SquareY].setBackground(Color.GREEN);
+		}else{
+			BattleshipMain.PlayerBoard.ShootEmptyPiece(SquareX,SquareY);
+		}
 	}
 
 	@Override
-	public void ClickAction(int Squarex, int SquareY) {
+	public void ClickAction(int SquareX, int SquareY){
 		// TODO Auto-generated method stub
 		if(!BattleshipMain.PlacingPhase){
+			if(!this.BeenShot[SquareX][SquareY]){
+				if(this.Squares[SquareX][SquareY].HasShip!=-1){
+					try {
+						this.Ships[this.Squares[SquareX][SquareY].HasShip].Shoot(new Location(50+(20*SquareX),50+(20*SquareY)));
+					} catch (CustomException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					this.Squares[SquareX][SquareY].setBackground(Color.GREEN);
+				}else{
+					this.Squares[SquareX][SquareY].setBackground(Color.RED);
+				}
+				this.BeenShot[SquareX][SquareY] = true;
+				this.Shoot();
+			}else{
+				System.out.println("square has already been shot");
+			}
 			
 		}
+	}
+
+	@Override
+	public void ShootEmptyPiece(int XPos, int YPos) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

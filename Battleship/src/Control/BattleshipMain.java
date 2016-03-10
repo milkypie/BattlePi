@@ -3,6 +3,9 @@ package Control;
 import Visuals.VisualControl;
 import CustomComponents.Action;
 import CustomComponents.Board;
+
+import javax.swing.JOptionPane;
+
 import CustomComponents.AIBoard;
 import CustomComponents.PlayerBoard;
 import Input.MouseInput;
@@ -10,7 +13,7 @@ import Input.MouseInput;
 public class BattleshipMain {
 	/*TODO
 	 * 	custom JPanels
-	 *  Action Listners (for initial placing)
+	 *  Action Listeners (for initial placing)
 	 *  
 	 */
 	public static Boolean GameWon = false,PlayerWon = false, PlacingPhase = true;
@@ -32,27 +35,19 @@ public class BattleshipMain {
 		AIBoard.setLocation(330, 10);
 
 		VisualControl.SetupVisuals();
-		
+		VisualControl.BasePanel.updateUI();
 		PlayerBoard.PlacePieces();
 		AIBoard.PlacePieces();
 		
-		while(!GameWon){
-			PlayerBoard.MakeMove();
-			if(!GameWon){
-				AIBoard.MakeMove();
-			}
-		}
-		if(PlayerWon){
-			PlayerWin();		
-		}else{
-			AIWin();
-		}
 	}
 	public static void PlayerWin(){
+		JOptionPane.showMessageDialog(
+			    null, "You have won!");
 		
 	}
 	public static void AIWin(){
-		
+		JOptionPane.showMessageDialog(
+			    null, "The Magnificent AI wins!");
 	}
 
 }
