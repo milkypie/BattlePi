@@ -11,12 +11,16 @@ import Control.BattleshipMain;
 
 
 public class AIBoard extends Board {
-
-	private	int SquareX, SquareY;
+	private int AI = 0;//choose the AI to play against
+	private int[] LastHit;
 	private int ShipsPlaced =  5;
 
 	public AIBoard(){
 		super();
+		LastHit = new int[3];
+		LastHit[0] = -1;
+		LastHit[1] = -1;
+		LastHit[2] = -1;
 		this.NameLabel = new JLabel();
 		this.NameLabel.setLocation(50, 0);
 		this.NameLabel.setForeground(Color.BLACK);
@@ -50,8 +54,29 @@ public class AIBoard extends Board {
 
 	@Override
 	public void MakeMove() {
-		// TODO Auto-generated method stub
-		
+		int SquareX,SquareY;
+		Random RandGen = new Random();
+		switch(this.AI){
+		case 0 :
+			//Earliest AI, just shoots a random square
+			do {
+				SquareX = RandGen.nextInt(12);
+				SquareY = RandGen.nextInt(12);
+			}while (BattleshipMain.PlayerBoard.BeenShot[SquareX][SquareY]);
+			this.Shoot(SquareX,SquareY);
+			
+		break;
+		default:
+			System.out.println("Not a Valid AI selection, setting to easiest AI");
+			this.AI = 0;
+			
+			do {
+				SquareX = RandGen.nextInt(12);
+				SquareY = RandGen.nextInt(12);
+			}while (BattleshipMain.PlayerBoard.BeenShot[SquareX][SquareY]);
+			this.Shoot(SquareX,SquareY);
+		break;
+		}
 	}
 
 	@Override
@@ -62,12 +87,7 @@ public class AIBoard extends Board {
 		}
 	}
 	
-	public void Shoot() {
-		Random RandGen = new Random();
-		do {
-			SquareX = RandGen.nextInt(12);
-			SquareY = RandGen.nextInt(12);
-		}while (BattleshipMain.PlayerBoard.BeenShot[SquareX][SquareY]);
+	public void Shoot(int SquareX,int SquareY) {
 		
 		System.out.println("AI shot at square :"+SquareX+", "+SquareY);
 		
@@ -102,7 +122,7 @@ public class AIBoard extends Board {
 					this.Squares[SquareX][SquareY].setBackground(Color.RED);
 				}
 				this.BeenShot[SquareX][SquareY] = true;
-				this.Shoot();
+				this.MakeMove();
 			}else{
 				System.out.println("square has already been shot");
 			}
